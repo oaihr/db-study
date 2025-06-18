@@ -81,6 +81,74 @@
   from student;
   
   
+  /******************************************************************/
+  --숫자
+  
+  select
+    ROUND(1.67),    --반올림
+    ROUND(1.67, 1),
+    ROUND(1.64578, 3),
+    ROUND(1.64578, 0),
+    ROUND(357.123, -1),
+    TRUNC(1.456),   --버림
+    TRUNC(1.456, 2),
+    MOD(15, 4),     --나머지
+    CEIL(123.123),  --인접한 큰 정수
+    FLOOR(123.123), --인접한 작은 정수
+    POWER(6, 3)     -- 6의 3승
+  from dual;
+  
+  select 
+    rownum, --행 번호
+    CEIL(rownum/3) 그룹번호, -- 1/3=0.33 -> 1   2/3=0.66 -> 1   3/3=1
+                            -- 4/3=1.33 -> 2   5/3=1.66 -> 2   6/3=2
+    CEIL(rownum/4) 팀구분,
+    empno,
+    ename
+  from emp;  
+    
+  
+  /******************************************************************/
+  --날짜
+  
+  select
+    null,
+    SYSDATE,      --현재날짜
+    SYSTIMESTAMP, --현재날싸시간
+    MONTHS_BETWEEN('2024-01-05', '2024-03-05'), --앞날짜-뒷날짜 -> 월로 환산
+    MONTHS_BETWEEN('2025-11-05', '2025-06-21')
+  from dual;
+  
+  select 
+    ADD_MONTHS(SYSDATE, 3),
+    ADD_MONTHS(SYSDATE, -8),
+    LAST_DAY(SYSDATE),
+    NEXT_DAY(SYSDATE, '수'),
+    NEXT_DAY(SYSDATE, '토')
+  from dual;
+  
+  select
+    SYSDATE,
+    ROUND(SYSDATE),
+    TRUNC(SYSDATE),
+    TRUNC(SYSDATE, 'DD'),   --DAY
+    TRUNC(SYSDATE, 'MM'),   --MONTH
+    TRUNC(SYSDATE, 'YY'),    --YEAR
+    ADD_MONTHS(SYSDATE, 1),
+    SYSDATE + 3,
+    SYSDATE + 7,
+    
+    --다음달의 첫날
+    TRUNC( ADD_MONTHS(SYSDATE, 1), 'MM' ),
+    LAST_DAY(SYSDATE)+1,
+    
+    --전월의 마지막 날
+    LAST_DAY(ADD_MONTHS(SYSDATE, -1)),
+    TRUNC(SYSDATE, 'MM') - 1
+  from dual;
+  
+  
+  
   
   
   
