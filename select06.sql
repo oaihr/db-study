@@ -81,10 +81,10 @@ select
     name,
     height,
     RANK() OVER (order by height desc) 키순위,
-    DENSE_RANK() OVER (order by height desc) 키순위,
+    DENSE_RANK() OVER (order by height desc) dense 키순위,
     grade,
-    RANK() OVER (partition by grade order by height desc) 키순위
-    DENSE_RANK() OVER (partition by grade order by height desc) 학년키순위
+    RANK() OVER (partition by grade order by height desc) 학년별 키순위,
+    DENSE_RANK() OVER (partition by grade order by height desc) 학년별 dense 키순위
 from student
 order by grade;
 
