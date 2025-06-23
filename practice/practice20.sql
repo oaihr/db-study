@@ -55,8 +55,9 @@ order by 3 asc;
 
 
 --t1
-select *
+select name, position, pay
 from emp2
 where (position, pay) IN (  select position, MAX(PAY)
                             from emp2
-                            group by position);
+                            group by position)
+order by pay;
